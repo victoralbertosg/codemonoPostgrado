@@ -1,0 +1,110 @@
+<app-top-bar title="periodo" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frmperiodo" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>periodo</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="periodo" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmperiodo.controls.periodo.invalid && (frmperiodo.controls.periodo.dirty || frmperiodo.controls.periodo.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.periodo.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- MaxLength Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.periodo.errors.maxlength">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum field length is 10</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>descripcion</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="descripcion" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmperiodo.controls.descripcion.invalid && (frmperiodo.controls.descripcion.dirty || frmperiodo.controls.descripcion.touched)">
+
+                  <!-- MaxLength Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.descripcion.errors.maxlength">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum field length is 50</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>estado</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="estado" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmperiodo.controls.estado.invalid && (frmperiodo.controls.estado.dirty || frmperiodo.controls.estado.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.estado.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.estado.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmperiodo.controls.estado.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/periodo']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+

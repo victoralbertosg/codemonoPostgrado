@@ -1,0 +1,219 @@
+// Material Colors
+/*
+Red $mat-red
+Pink $mat-pink
+Purple $mat-purple
+Deep-Purple $mat-deep-purple
+Indigo $mat-indigo
+Blue $mat-blue
+Light-blue $mat-light-blue
+Cyan $mat-cyan
+Teal $mat-teal
+Green $mat-green
+Light-green $mat-light-green
+Lime $mat-lime
+Yellow $mat-yellow
+Amber $mat-amber
+Orange $mat-orange
+Deep-orange $mat-deep-orange
+Brown $mat-brown
+Grey $mat-grey
+Blue-grey $mat-blue-grey
+Black $mat-black
+White $mat-white
+*/
+
+
+// AmCoder Theme
+
+$my-app-primary: mat-palette($mat-blue-grey, 600);
+$my-app-accent: mat-palette($mat-purple, 500);
+$my-app-warn: mat-palette($mat-red, 600);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+:root {
+  --color-primary: #546e7a;
+  --color-primary-rgb: 84,110,122;
+  --color-primary-contrast: #ffffff;
+  --color-primary-contrast-rgb: 255,255,255;
+  --color-primary-shade: #4a616b;
+  --color-primary-tint: #657d87;
+
+  --color-secondary: #cfd8dc;
+  --color-secondary-rgb: 207,216,220;
+  --color-secondary-contrast: #000000;
+  --color-secondary-contrast-rgb: 0,0,0;
+  --color-secondary-shade: #b6bec2;
+  --color-secondary-tint: #d4dce0;
+
+  --color-tertiary: #1F9CE4;
+  --color-tertiary-rgb: 31, 156, 228;
+  --color-tertiary-contrast: #ffffff;
+  --color-tertiary-contrast-rgb: 255, 255, 255;
+  --color-tertiary-shade: #1b89c9;
+  --color-tertiary-tint: #35a6e7;
+
+  --color-success: #2dd36f;
+  --color-success-rgb: 45, 211, 111;
+  --color-success-contrast: #ffffff;
+  --color-success-contrast-rgb: 255, 255, 255;
+  --color-success-shade: #28ba62;
+  --color-success-tint: #42d77d;
+
+  --color-warning: #ffc409;
+  --color-warning-rgb: 255, 196, 9;
+  --color-warning-contrast: #000000;
+  --color-warning-contrast-rgb: 0, 0, 0;
+  --color-warning-shade: #e0ac08;
+  --color-warning-tint: #ffca22;
+
+  --color-danger: #E53935;
+  --color-danger-rgb: 229,57,53;
+  --color-danger-contrast: #ffffff;
+  --color-danger-contrast-rgb: 255,255,255;
+  --color-danger-shade: #ca322f;
+  --color-danger-tint: #e84d49;
+
+  --color-dark: #222428;
+  --color-dark-rgb: 34, 36, 40;
+  --color-dark-contrast: #ffffff;
+  --color-dark-contrast-rgb: 255, 255, 255;
+  --color-dark-shade: #1e2023;
+  --color-dark-tint: #383a3e;
+
+  --color-medium: #92949c;
+  --color-medium-rgb: 146, 148, 156;
+  --color-medium-contrast: #ffffff;
+  --color-medium-contrast-rgb: 255, 255, 255;
+  --color-medium-shade: #808289;
+  --color-medium-tint: #9d9fa6;
+
+  --color-light: #ffffff;
+  --color-light-rgb: 244, 245, 248;
+  --color-light-contrast: #919191;
+  --color-light-contrast-rgb: 0, 0, 0;
+  --color-light-shade: #d7d8da;
+  --color-light-tint: #f5f6f9;
+
+  --color-transparent: rgb(0, 0, 0, 0);
+  --color-transparent-contrast: #ffffff;
+
+  --color-premium: -webkit-linear-gradient(45deg, #546e7a, #29434e);
+  --color-premium-gradiant: linear-gradient(45deg, #546e7a, #29434e);
+  --color-premium-shadow: 3px 3px 10px 0 rgba(123, 31, 162, .5);
+  --color-premium-contrast: #fff;
+
+  .timepicker {
+    background-color: var(--color-primary) !important;
+  }
+
+  // Button colors
+  body .primary {
+    background-color: var(--color-primary) !important;
+    color: var(--color-primary-contrast) !important;
+  }
+
+  body .secondary {
+    background-color: var(--color-secondary) !important;
+    color: var(--color-secondary-contrast) !important;
+  }
+
+  body .tertiary {
+    background-color: var(--color-tertiary) !important;
+    color: var(--color-tertiary-contrast) !important;
+  }
+
+  body .success {
+    background-color: var(--color-success) !important;
+    color: var(--color-success-contrast) !important;
+  }
+
+  body .danger {
+    background-color: var(--color-danger) !important;
+    color: var(--color-danger-contrast) !important;
+  }
+
+  body .warning {
+    background-color: var(--color-warning) !important;
+    color: var(--color-warning-contrast) !important;
+  }
+
+  body .dark {
+    background-color: var(--color-dark) !important;
+    color: var(--color-dark-contrast) !important;
+  }
+
+  body .medium {
+    background-color: var(--color-medium) !important;
+    color: var(--color-medium-contrast) !important;
+  }
+
+  body .light {
+    background-color: var(--color-light) !important;
+    color: var(--color-light-contrast) !important;
+  }
+
+  body .transparent {
+    background-color: var(--color-transparent) !important;
+    color: var(--color-transparent-contrast) !important;
+  }
+
+  body .premium {
+    background: var(--color-premium) !important;
+    background: var(--color-premium-gradiant) !important;
+    color: var(--color-premium-contrast) !important;
+  }
+
+  body .premium :hover :focus {
+    background: var(--color-premium) !important;
+    background: var(--color-premium-gradiant) !important;
+    color: var(--color-premium-contrast) !important;
+  }
+
+
+  // Text colors
+
+  body .text-primary {
+    color: var(--color-primary) !important;
+  }
+
+  body .text-secondary {
+    color: var(--color-secondary) !important;
+  }
+
+  body .text-tertiary {
+    color: var(--color-tertiary) !important;
+  }
+
+  body .text-success {
+    color: var(--color-success) !important;
+  }
+
+  body .text-danger {
+    color: var(--color-danger) !important;
+  }
+
+  body .text-warning {
+    color: var(--color-warning) !important;
+  }
+
+  body .text-dark {
+    color: var(--color-dark) !important;
+  }
+
+  body .text-medium {
+    color: var(--color-medium) !important;
+  }
+
+  body .text-light {
+    color: var(--color-light) !important;
+  }
+
+  body .back-ground {
+    background: linear-gradient(45deg, var(--color-secondary), var(--color-primary)) !important;
+    height: auto;
+  }
+}

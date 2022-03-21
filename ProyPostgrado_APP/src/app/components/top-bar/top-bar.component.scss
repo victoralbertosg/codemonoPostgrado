@@ -1,0 +1,29 @@
+.navbar {
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 1.5em;
+    padding: 0.1rem 1rem 0.1em 3.5em;
+}
+
+.title {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.subtitle {
+    color: #9c9c9c;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.adjust-toolbar {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        border-bottom: 1px solid #e9e9e9;
+        margin-bottom: 1.5em;
+        padding: 0.1rem 1.7rem;
+    }
+}

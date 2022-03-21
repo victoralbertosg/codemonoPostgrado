@@ -1,0 +1,173 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 50px !important;
+}
+
+.sidenav-header {
+  width: 0 auto;
+  padding: 10% 0px 0px 0px;
+  border-radius: 0px;
+  transition: none;
+  margin-top: 2em;
+  box-shadow: none !important;
+}
+
+.header-avatar {
+  background-size: cover;
+  margin-left: 17px !important;
+  margin-bottom: 10px;
+}
+
+.header-image {
+  height: 70px;
+  width: 70px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 50% !important;
+}
+
+.app-name {
+  color: white;
+  margin-left: 5px;
+}
+
+.text-header-menu {
+  font-size: medium;
+  font-weight: 500;
+  color: #5f5f5f;
+  margin-top: 10px;
+}
+
+.text-header-sub-menu {
+  font-size: small;
+  color: #5f5f5f;
+}
+
+.logo-style {
+  width: 50px !important;
+  padding: 5px !important;
+}
+
+.jumbotron {
+  background-color: #eef5f9 !important;
+}
+
+.icon-color {
+  color: #fff;
+}
+
+.example-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.mat-toolbar {
+  color: #fff;
+}
+
+.mat-list-base {
+  padding-top: 20px;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.mat-nav-list .mat-list-item {
+  cursor: pointer;
+  outline: 0;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+
+.icon-ajust {
+  padding: 5px 15px 5px 5px;
+  margin-top: -3px;
+}
+
+.icon-ajust-size {
+  width: 60px;
+  height: 60px;
+}
+
+.ajust-top {
+  margin-top: 10px !important;
+}
+
+.mat-expansion-panel {
+  background: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-space {
+  flex: 1 1 auto;
+}
+
+.item-space {
+  margin-top: 5px !important;
+  margin-bottom: 5em !important;
+}
+
+.text-top {
+  margin-top: 5px;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none !important;
+}
+
+.active-panel {
+  height: 48px !important;
+  background-color: rgba(234, 234, 234, 0.55) !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 24px;
+  border-radius: inherit;
+  position: relative;
+}
+
+.collapse-menu {
+  color: #797878;
+  margin-top: 5px;
+  margin-bottom: 0px !important;
+}
+
+.menu-icon {
+  width: 35px;
+  height: 35px;
+  margin-top: -5px;
+  margin-left: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .sidenav-header {
+    width: 0 auto;
+    padding: 10% 0px 0px 0px;
+    border-radius: 0px;
+    transition: none;
+    margin-top: 2em;
+    color: #5f5f5f;
+    box-shadow: none !important;
+  }
+
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 50px !important;
+  }
+
+  .mat-drawer-content {
+    padding: 0px;
+  }
+
+}

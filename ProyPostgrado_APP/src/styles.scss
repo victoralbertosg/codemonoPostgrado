@@ -1,0 +1,544 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~material-design-icons/iconfont/material-icons.css";
+@import '~@angular/material/theming';
+@include mat-core();
+
+/*Import custom theme*/
+@import 'assets/scss/theme_grey.scss';
+
+
+html,
+body {
+  height: 100%;
+  background-color: #eaeaea !important;
+  margin: 0;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+}
+
+a {
+  color: #919191 !important;
+}
+
+// Style Adjust Components
+
+.mat-tab-body-content {
+  background: #eaeaea !important;
+}
+
+.mat-tab-header {
+  border-radius: 3px !important;
+}
+
+.mat-tab-group {
+  border-radius: 5px;
+}
+
+.mat-drawer-container {
+  margin-top: 50px;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
+mat-card {
+  box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05) !important;
+}
+
+.mat-list-base .mat-list-item {
+  color: #b0b0b0;
+}
+
+.mat-drawer-container {
+  height: 100%;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: #eef5f9;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.mat-accordion>.mat-expansion-panel-spacing:last-child,
+.mat-accordion>:last-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing {
+  margin-bottom: 5px !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.ngx-position-absolute.ngx-progress-bar {
+  z-index: 0 !important;
+}
+
+.ngx-position-absolute.ngx-overlay {
+  z-index: 0 !important;
+}
+
+ngx-ui-loader>div.ngx-overlay.ngx-position-absolute.loading-foreground {
+  z-index: 0 !important;
+}
+
+.toolbar_left {
+  display: flex;
+  align-items: center;
+  align-content: flex-first;
+  vertical-align: middle;
+}
+
+.toolbar_right {
+  display: flex;
+  align-items: center;
+  align-content: flex-end;
+  vertical-align: middle;
+}
+
+.toolbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 25px;
+  /* border-bottom: 1px solid #ebedf2;*/
+  min-height: 60px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  vertical-align: middle;
+}
+
+.card-header {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 1.2rem;
+  background-color: #ffffff;
+}
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.separator {
+  border: 1px solid #efefef;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #d0d0d0
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
+
+.mat-list-base .mat-list-item {
+  // light content
+  // color: #909090;
+
+  // dark content
+  color: #797878;
+}
+
+.hide-content {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 800ms 0ms;
+}
+
+.show-content {
+  height: auto;
+  opacity: 1;
+  transition: height 0ms 400ms, opacity 800ms 0ms;
+}
+
+.mat-card-header-text {
+  margin: 0px !important;
+}
+
+.mat-cell,
+.mat-footer-cell {
+  color: rgba(82, 82, 82, 0.87);
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 30px !important;
+  padding: 0 17px !important;
+}
+
+.mat-form-field {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.adjust-m-top-10 {
+  margin-top: 10px !important;
+}
+
+.adjust-m-top-20 {
+  margin-top: 20px !important;
+}
+
+.adjust-m-top-30 {
+  margin-top: 30px !important;
+}
+
+.adjust-m-bottom-10 {
+  margin-bottom: 10px !important;
+}
+
+.adjust-m-bottom-20 {
+  margin-bottom: 20px !important;
+}
+
+.adjust-m-bottom-30 {
+  margin-bottom: 30px !important;
+}
+
+mat-row,
+mat-header-row,
+mat-footer-row,
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-bottom-color: rgb(239, 239, 239);
+}
+
+.vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.jumbotron {
+  padding: 0px 40px 40px 40px;
+  margin-bottom: 2rem !important;
+  border-radius: 0.3rem !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.example-sidenav-container {
+  background-color: #eef5f9 !important;
+}
+
+.img-content {
+  background-image: url("./assets/images/mountain.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.img-sidenav {
+  background-image: url("./assets/images/sidenav-1.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  height: 100%;
+  width: 250px;
+}
+
+.no-data-adjust{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Table Style
+table {
+  width: 100%;
+  color: grey !important;
+}
+
+// Zebra Style
+.row_color_Table {
+  // background-color: #f5f5f5;
+  background-color: #fff;
+}
+
+// Cursor Style
+.cursor {
+  cursor: pointer;
+}
+
+// Material Table Header Style
+.mat-header-cell {
+  color: #9a9a9a;
+  background-color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 500;
+}
+
+// Bottom Shadow Header
+.mat-table-header {
+  border-bottom: 1px solid #d0cece;
+}
+
+// Desktop button position
+.position-right {
+  align-items: center;
+}
+
+.mat-fab:not([class*=mat-elevation-z]),
+.mat-mini-fab:not([class*=mat-elevation-z]) {
+  box-shadow: 0px 3px 2px -1px rgba(0, 0, 0, 0.2), 0px 3px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 9px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-elevation-z8 {
+  box-shadow: none !important;
+}
+
+.button-add {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.margin-bottom {
+  margin-bottom: 1.5em;
+}
+
+.margin-top {
+  margin-top: 1em !important;
+}
+.margin-top-min{
+  margin-top: 0.5em !important;
+}
+.padding {
+  padding: 0.5em;
+}
+
+.padding-lr {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.padding-top {
+  padding-top: 1em !important;
+}
+
+.text-sm{
+font-size: small;
+}
+.text-md{
+  font-size: medium;
+}
+.text-lg{
+  font-size: large;
+}
+.text-xl{
+  font-size: x-large;
+}
+
+
+.mat-list-base {
+  padding-top: 1px !important;
+}
+
+.footer {
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0;
+  width: 245px;
+
+}
+
+.filter-header {
+  padding: 0em 1.5em;
+  // background-color: #f5f5f5;
+}
+.filter-subheader{
+  padding: 0.84em 1.2em;
+}
+
+.filter-title {
+  color: #504f4f;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.filter-form{
+  font-size: 12px; 
+  width: 100%;
+}
+
+.mat-expansion-panel-header {
+  align-items: center;
+  padding: 0 16px !important;
+}
+
+.mat-radio-label {
+  margin-right: 20px;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 10px 16px !important;
+}
+
+.filter-sidebar{
+  width: 245px;
+}
+
+.mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 95vh !important;
+  overflow: auto;
+}
+
+.filter-content{
+  padding-bottom: 5em;
+}
+.mr-0 {
+  margin-right: 0;
+}
+.ml-auto {
+  margin-left:auto;
+}
+.d-block {
+  display:block;
+}
+::ng-deep .mat-sidenav-container{
+  height:100vh !important; /* or 100% */
+}
+// Adjust margin in mobile
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    padding: 0px 20px 20px 20px !important;
+  }
+}
+
+// Style table collapse
+@media screen and (max-width: 960px) {
+
+  // formato de celdas matCellDef para movil.
+  .td1 {
+    width: 100% !important;
+    color: #333333;
+    background-color: #fff !important;
+    font-weight: 500;
+    font-size: 16px !important;
+  }
+
+  .td2 {
+    width: 100% !important;
+  }
+
+  .td3 {
+    width: 100% !important;
+  }
+
+  .td4 {
+    width: 100% !important;
+  }
+
+  .td5 {
+    width: 100% !important;
+  }
+
+  .td6 {
+    width: 100% !important;
+  }
+
+  .td7 {
+    width: 100% !important;
+  }
+
+  // quita estilo zebra para tarjetas movil
+  .row_color_Table {
+    background-color: #ffffff !important
+  }
+
+  // convierte tabla en tipo tarjetas para movil
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+
+  // posicion textos tarjeta tabla movil
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 12px;
+    text-align: right;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding: 15px;
+    color: #696969;
+  }
+
+  // formato de texto tarjetas tabla Movil
+  .mat-table .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: .85em;
+  }
+
+  // oculta header de tabla desktop Movil
+  mat-header-row {
+    min-height: 0px;
+  }
+
+  .mat-header-cell {
+    font-size: 12px;
+    font-weight: 500;
+    display: none;
+  }
+
+}
+
+// Scroll Style
+::-webkit-scrollbar {
+  width: 7.5px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  background-color: #adadad;
+}
+
+.margin-left-a{
+  margin-left: auto !important;
+}
+
+.margin-right-a{
+  margin-right: auto !important;
+}
+

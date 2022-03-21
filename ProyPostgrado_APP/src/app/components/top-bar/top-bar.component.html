@@ -1,0 +1,21 @@
+<nav class="navbar light">
+
+  <div class="adjust-toolbar">
+    <ng-content select="[toolL]"></ng-content>
+  </div>
+
+  <a class="navbar-brand title">{{title}}</a>
+
+  <span class="mr-sm-0 mr-sm-2" style="color: #9c9c9c;">&nbsp;|&nbsp;</span>
+
+  <ul class="navbar-nav mr-auto subtitle">
+    <li class="nav-item">
+      {{subTitle}}
+    </li>
+  </ul>
+
+  <form class="form-inline">
+    <ng-content select="[toolR]"></ng-content>
+  </form>
+</nav>
+

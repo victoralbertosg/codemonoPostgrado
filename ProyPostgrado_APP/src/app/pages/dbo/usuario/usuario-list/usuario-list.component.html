@@ -1,0 +1,175 @@
+<mat-drawer-container>
+
+  <mat-drawer #drawer [mode]="mobileQuery.matches ? 'over' : 'side'" position="end" (opened)="sidenavStatus='open'"
+    (closed)="sidenavStatus='close'" class="filter-sidebar">
+
+    <!-- Filter controls -->
+    <div class="light filter-content">
+
+      <!-- Header filter -->
+      <mat-list>
+        <mat-list-item class="filter-header">
+          <div mat-line><span class="filter-title text-primary ">Filters</span></div>
+          <button mat-icon-button class="light ml-auto mr-0" (click)="drawer.toggle()" >
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+
+      <div class="filter-subheader">
+        <span>Feature available in Professional version</span>
+      </div>
+
+    </div>
+  </mat-drawer>
+
+  <!-- Tob bar -->
+  <app-top-bar title="usuario" subTitle="List">
+    <div toolL>
+    </div>
+    <div toolR>
+      <button class="btn btn-sm my-2 my-sm-0 primary button-add" type="button" [routerLink]="['/dbo/usuario/add']">
+        Add
+      </button>
+
+      <span class="padding"></span>
+
+      <button mat-icon-button class="light" (click)="drawer.toggle()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+  </app-top-bar>
+  <!-- Tob bar -->
+
+  <!-- Content -->
+  <div class="jumbotron">
+    <mat-card class="margin-bottom">
+      <mat-card-content>
+        <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+          <mat-icon>person_pin</mat-icon>
+        </button>
+        <span class="padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua.</span>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <mat-card-title>usuario</mat-card-title>
+          <mat-card-subtitle>CRUD with material table</mat-card-subtitle>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <mat-form-field style="width:100% !important;" appearance="outline">
+            <mat-label>Search in results</mat-label>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="">
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-5 col-md-8 col-sm-12">
+          <mat-paginator [pageSizeOptions]="[10, 15, 20, 30, 50, 100]"></mat-paginator>
+        </div>
+      </div>
+
+
+      <mat-card-content>
+        <div class="mat-card-padding">
+
+          <mat-table mat-table [dataSource]="InfoTableDataSource" matSort class="example-container mat-elevation-z8">
+
+          <ng-container matColumnDef="id_usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">id_usuario</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="id_usuario" class="td1" >
+              {{row.id_usuario}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td2">nombre</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="nombre" class="td2" >
+              {{row.nombre}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="apellido">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td3">apellido</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="apellido" class="td3" >
+              {{row.apellido}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td4">email</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="email" class="td4" >
+              {{row.email}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="dni">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td5">dni</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="dni" class="td5" >
+              {{row.dni}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="id_rol">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td6">id_rol</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="id_rol" class="td6" >
+              {{row.id_rol}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ciclo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td7">ciclo</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="ciclo" class="td7" >
+              {{row.ciclo}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td8">password</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="password" class="td8" >
+              {{row.password}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td9">estado</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="estado" class="td9" >
+              {{row.estado}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="td10">Action</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Action" class="td10">
+
+              <button mat-flat-button type="button" [routerLink]="['/dbo/usuario/edit/', row.id_usuario]" matTooltip="Edit usuario">
+                <mat-icon class="light">edit</mat-icon>
+              </button>
+              <button mat-flat-button type="button" (click)="delete(row)" matTooltip="Delete usuario">
+                <mat-icon class="light">delete</mat-icon>
+              </button>
+
+            </mat-cell>
+          </ng-container>
+
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" class="mat-table-header"></mat-header-row>
+            <mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"
+              [ngClass]="{row_color_Table: even}">
+            </mat-row>
+          </mat-table>
+        </div>
+
+        <div class="mat-card-padding" *ngIf="this.usuarios.length===0">
+          <mat-card class="example-card">
+            <div class="no-data-adjust">
+              <span class="text-medium">
+                No records found
+              </span>
+              <mat-icon class="text-medium">web_asset</mat-icon>
+            </div>
+          </mat-card>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <!-- Content -->
+
+</mat-drawer-container>

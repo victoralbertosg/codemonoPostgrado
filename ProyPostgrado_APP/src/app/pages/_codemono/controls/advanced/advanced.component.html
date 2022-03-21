@@ -1,0 +1,101 @@
+<div class="jumbotron">
+    <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12">
+        <!-- Autocomplete -->
+        <mat-card class="margin-top">
+            <mat-card-header>
+                <mat-card-title>Autocomplete</mat-card-title>
+                <mat-card-subtitle>The autocomplete is a normal text input enhanced by a panel of suggested options.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-card-padding">
+                    <span>Display value autocomplete</span>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Avenger</mat-label>
+                            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Bottom Sheet -->
+        <mat-card class="margin-top">
+            <mat-card-header>
+                <mat-card-title>Bottom Sheet</mat-card-title>
+                <mat-card-subtitle>
+                    The MatBottomSheet service can be used to open Material Design panels to the bottom of the screen.
+                    These panels are intended primarily as an interaction on mobile devices where they can be used as an
+                    alternative to dialogs and menus.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-card-padding">
+                    <p>You have received a file called "cat-picture.jpeg".</p>
+                    <button mat-raised-button class="secondary" (click)="openBottomSheet()">Open file</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Dialog -->
+        <mat-card class="margin-top">
+            <mat-card-header>
+                <mat-card-title>Dialog</mat-card-title>
+                <mat-card-subtitle>
+                    The MatDialog service can be used to open modal dialogs with Material Design styling and animations.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-card-padding">
+                    <ol>
+                        <li>
+                            <mat-form-field>
+                                <mat-label>What's your name?</mat-label>
+                                <input matInput [(ngModel)]="name">
+                            </mat-form-field>
+                        </li>
+                        <li>
+                            <button mat-raised-button class="secondary" (click)="openDialog()">Pick one</button>
+                        </li>
+                        <li *ngIf="animal" class="margin-top">
+                            You chose: <strong>{{animal}}</strong>
+                        </li>
+                    </ol>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Snackbar -->
+        <mat-card class="margin-top">
+            <mat-card-header>
+                <mat-card-title>SnackBar</mat-card-title>
+                <mat-card-subtitle>
+                    MatSnackBar is a service for displaying snack-bar notifications.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-card-padding">
+                    <mat-form-field>
+                        <mat-label>Message</mat-label>
+                        <input matInput value="Disco party!" #message>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Action</mat-label>
+                        <input matInput value="Dance" #action>
+                    </mat-form-field>
+
+                    <button mat-raised-button class="secondary" (click)="openSnackBar(message.value, action.value)">Show
+                        snack-bar</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+</div>

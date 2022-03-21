@@ -1,0 +1,138 @@
+<mat-toolbar class="example-toolbar primary">
+  <button mat-icon-button class="text-light" (click)="toggleSidenav('toggle button')">
+    <!-- <mat-icon>menu</mat-icon> -->
+    <div class="menu-icon">
+      <ng-lottie  type="image/svg+xml" [options]="oMenu" (animationCreated)="animationCreated($event)">
+    </ng-lottie>
+    </div>
+  </button>
+  <img src="assets/images/Angular.png" alt="homepage" class="logo-style" />
+  <h1 class="app-name">SCG Angular</h1>
+  <span class="mat-space"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="text-light">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>lock</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+<!-- opened="true" -->
+<mat-sidenav-container class="example-sidenav-container" (backdropClick)="toggleSidenav('backdrop')">
+  <mat-sidenav class="img-sidenav" #snav [mode]="'over'" [autoFocus]="false" fixedTopGap="50"> 
+    <div class="sidenav-header">
+      <img mat-card-image class="header-image" src="assets/images/avatar.png" />
+      <div class="text-top text-center">
+        <span class="text-header-menu">Victor Soto</span><br>
+        <span class="text-header-sub-menu">Administrator</span>
+      </div>
+    </div>
+    <mat-nav-list class="item-space">
+
+      <a mat-list-item [routerLink]="['/welcome']" routerLinkActive="premium"><i class="material-icons icon-ajust">
+          home
+        </i>
+        Home
+      </a>
+
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+          style="margin-top: 15px;">
+          <mat-expansion-panel-header [ngClass]="{'active-panel': panelOpenState===true}" routerLinkActive="active-panel">
+            <mat-panel-title>
+              <i class="material-icons icon-ajust" style="color: #797878;">
+                dashboard
+              </i>
+              <p class="collapse-menu">Components</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLink]="['/controls/basic']" routerLinkActive="premium"><i
+              class="material-icons icon-ajust">
+              star
+            </i>
+            Basic
+          </a>
+
+          <a mat-list-item [routerLink]="['/controls/advanced']" routerLinkActive="premium"><i
+              class="material-icons icon-ajust">
+              stars
+            </i>
+            Advanced
+          </a>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <a mat-list-item [routerLink]="['/dbo/alumno-avance']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        alumno_avance
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/curso']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        curso
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/detalle-matricula']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        detalle_matricula
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/facultad']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        facultad
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/inscripcion']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        inscripcion
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/matricula']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        Matricula
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/mencion']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        mencion
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/periodo']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        periodo
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/role']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        role
+      </a>
+
+      <a mat-list-item [routerLink]="['/dbo/usuario']" routerLinkActive="premium">
+        <i class="material-icons icon-ajust">extension</i>
+        usuario
+      </a>
+
+      <!--CODEMONO: NO REMOVE THIS COMMENT (MENU)-->
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+

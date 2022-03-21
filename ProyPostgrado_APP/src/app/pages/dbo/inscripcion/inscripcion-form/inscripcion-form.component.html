@@ -1,0 +1,159 @@
+<app-top-bar title="inscripcion" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frminscripcion" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_mencion</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_mencion" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frminscripcion.controls.id_mencion.invalid && (frminscripcion.controls.id_mencion.dirty || frminscripcion.controls.id_mencion.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_usuario</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_usuario" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frminscripcion.controls.id_usuario.invalid && (frminscripcion.controls.id_usuario.dirty || frminscripcion.controls.id_usuario.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>urlfile</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="urlfile" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frminscripcion.controls.urlfile.invalid && (frminscripcion.controls.urlfile.dirty || frminscripcion.controls.urlfile.touched)">
+
+                  <!-- MaxLength Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.urlfile.errors.maxlength">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum field length is 200</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>estado</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="estado" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frminscripcion.controls.estado.invalid && (frminscripcion.controls.estado.dirty || frminscripcion.controls.estado.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.estado.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.estado.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frminscripcion.controls.estado.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/inscripcion']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+

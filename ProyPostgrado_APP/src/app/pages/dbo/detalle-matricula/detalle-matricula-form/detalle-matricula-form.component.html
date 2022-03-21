@@ -1,0 +1,171 @@
+<app-top-bar title="detalle_matricula" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frmdetalle_matricula" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_matricula</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_matricula" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmdetalle_matricula.controls.id_matricula.invalid && (frmdetalle_matricula.controls.id_matricula.dirty || frmdetalle_matricula.controls.id_matricula.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_matricula.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_matricula.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_matricula.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_matricula.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_curso</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_curso" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmdetalle_matricula.controls.id_curso.invalid && (frmdetalle_matricula.controls.id_curso.dirty || frmdetalle_matricula.controls.id_curso.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_curso.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_curso.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_curso.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.id_curso.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>estado</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="estado" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmdetalle_matricula.controls.estado.invalid && (frmdetalle_matricula.controls.estado.dirty || frmdetalle_matricula.controls.estado.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.estado.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.estado.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.estado.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>promedio</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="promedio" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmdetalle_matricula.controls.promedio.invalid && (frmdetalle_matricula.controls.promedio.dirty || frmdetalle_matricula.controls.promedio.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.promedio.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.promedio.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmdetalle_matricula.controls.promedio.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/detalle-matricula']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+

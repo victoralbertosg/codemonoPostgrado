@@ -1,0 +1,143 @@
+<app-top-bar title="alumno_avance" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frmalumno_avance" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_usuario</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_usuario" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmalumno_avance.controls.id_usuario.invalid && (frmalumno_avance.controls.id_usuario.dirty || frmalumno_avance.controls.id_usuario.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.id_usuario.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.id_usuario.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.id_usuario.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.id_usuario.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>ciclo</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="ciclo" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmalumno_avance.controls.ciclo.invalid && (frmalumno_avance.controls.ciclo.dirty || frmalumno_avance.controls.ciclo.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.ciclo.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.ciclo.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.ciclo.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>fecha_registro</mat-label>
+                  <input matInput [matDatepicker]="fecha_registroPicker" formControlName="fecha_registro" autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="fecha_registroPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #fecha_registroPicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>estado</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="estado" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmalumno_avance.controls.estado.invalid && (frmalumno_avance.controls.estado.dirty || frmalumno_avance.controls.estado.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.estado.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.estado.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmalumno_avance.controls.estado.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/alumno-avance']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+

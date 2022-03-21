@@ -1,0 +1,64 @@
+<app-top-bar title="role" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frmrole" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>descripcion</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="descripcion" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmrole.controls.descripcion.invalid && (frmrole.controls.descripcion.dirty || frmrole.controls.descripcion.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmrole.controls.descripcion.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- MaxLength Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmrole.controls.descripcion.errors.maxlength">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum field length is 35</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/role']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+

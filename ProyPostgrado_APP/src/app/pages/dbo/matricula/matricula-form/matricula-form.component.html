@@ -1,0 +1,208 @@
+<app-top-bar title="Matricula" subTitle="Form">
+  <div toolL>
+
+  </div>
+  <div toolR>
+
+  </div>
+</app-top-bar>
+
+<div class="jumbotron">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <form [formGroup]="frmMatricula" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+        <mat-card class="example-card">
+          <mat-card-header class="adjust-m-bottom-30">
+            <mat-card-title>{{frmTitle}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="row">
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_usuario</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_usuario" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmMatricula.controls.id_usuario.invalid && (frmMatricula.controls.id_usuario.dirty || frmMatricula.controls.id_usuario.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_usuario.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_usuario.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_usuario.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_usuario.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_periodo</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_periodo" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmMatricula.controls.id_periodo.invalid && (frmMatricula.controls.id_periodo.dirty || frmMatricula.controls.id_periodo.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_periodo.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_periodo.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_periodo.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_periodo.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>id_mencion</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="id_mencion" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmMatricula.controls.id_mencion.invalid && (frmMatricula.controls.id_mencion.dirty || frmMatricula.controls.id_mencion.touched)">
+
+                  <!-- Field Required Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_mencion.errors.required">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Field required</label>
+                  </div>
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_mencion.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_mencion.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.id_mencion.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>ciclo</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="ciclo" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmMatricula.controls.ciclo.invalid && (frmMatricula.controls.ciclo.dirty || frmMatricula.controls.ciclo.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.ciclo.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.ciclo.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.ciclo.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>estado</mat-label>
+                  <input matInput class="text-capitalize" type="text" formControlName="estado" autocomplete="off">
+                </mat-form-field>
+                <div class="control-label" *ngIf="frmMatricula.controls.estado.invalid && (frmMatricula.controls.estado.dirty || frmMatricula.controls.estado.touched)">
+
+                  <!-- Only integer numbers Message Validation -->
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.estado.errors.pattern">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Only integer numbers</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.estado.errors.min">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
+                  </div>
+                  <div class="validation-adjust" *ngIf="frmMatricula.controls.estado.errors.max">
+                    <i class="material-icons text-danger">
+                      error
+                    </i>
+                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/matricula']">Cancel</button>
+
+            <button mat-raised-button class="primary" type="submit">
+              <i class="fa fa-save"></i> Save
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+    </div>
+  </div>
+</div>
+
