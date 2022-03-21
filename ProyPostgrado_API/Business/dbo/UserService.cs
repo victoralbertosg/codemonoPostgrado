@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace Business.dbo
 {
-    class UserService : IUserService
+    public class UserService 
     {
 
         /*private readonly AppSettings _appSettings;
@@ -62,12 +62,16 @@ namespace Business.dbo
             {
                 var usuario = await dao.GetusuarioLogin<usuarioModel>(parameters);
                 
-                if (usuario == null) return null;
-                /*userresponse.idusuario = usuario;
-                userresponse.Token = GetToken(usuario);
-                userresponse.rol = usuario.Rol;*/
+                if (usuario == null) return null;             
 
-                m.data = usuario;
+                foreach (usuarioModel value in usuario)
+                {
+                    userresponse.dni = value.dni;
+                    userresponse.Token = GetToken(value);
+                    userresponse.rol = value.id_rol;
+                }
+
+                m.data = userresponse;
                 m.executionError = false;
                 m.message = "";
             }
@@ -80,6 +84,7 @@ namespace Business.dbo
             return m;
         }
 
+
         private string GetToken(usuarioModel usuario)
             {
 
@@ -87,7 +92,7 @@ namespace Business.dbo
             //var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("SecretKey"));
 
             //var llave = Encoding.ASCII.GetBytes(_appSettings.Secreto);
-            string key = "miclavesecretatoken";
+            string key = "codemono-api-key-29062020";
             var llave = Encoding.ASCII.GetBytes(key);
             var tokenDescriptor = new SecurityTokenDescriptor
                 {

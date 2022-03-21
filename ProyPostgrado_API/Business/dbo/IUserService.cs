@@ -9,5 +9,6 @@ namespace Business.dbo
     interface IUserService
     {
        UserResponse Auth(AuthRequest model);
+       
     }
 }

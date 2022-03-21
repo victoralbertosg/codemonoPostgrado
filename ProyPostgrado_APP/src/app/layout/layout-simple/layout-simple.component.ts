@@ -79,4 +79,7 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   logout() {
     return null;
   }
+  login() {
+    return null;
+  }
 }

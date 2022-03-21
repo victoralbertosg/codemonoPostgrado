@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
 using Business.dbo;
 using Business.tools;
 using Entities.dbo;
@@ -21,6 +21,7 @@ namespace API.Controllers
         /// Defines the business.
         /// </summary>
         private readonly usuarioService business;
+        private readonly UserService businessUser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="usuarioController"/> class.
@@ -29,6 +30,7 @@ namespace API.Controllers
         public usuarioController(IConfiguration config)
         {
             business = new usuarioService(config, "Development");
+            businessUser= new UserService(config, "Development");
         }
 
         /// <summary>
@@ -39,6 +41,7 @@ namespace API.Controllers
         /// <param name="Active">The Activo<see cref="int?"/>.</param>
         /// <returns>The <see cref="Task{ResponseModel}"/>.</returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Getusuario(Int32? id_usuario)
         {
             Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>()
@@ -61,6 +64,7 @@ namespace API.Controllers
         /// <param name="id">The ProjectId<see cref="int?"/>.</param>
         /// <returns>The <see cref="Task{ResponseModel}"/>.</returns>
         [HttpGet("{id_usuario}")]
+        [Authorize]
         public async Task<IActionResult> Getusuario(Int32 id_usuario)
         {
             Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>()
@@ -83,7 +87,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="model">The model<see cref="usuarioModel"/>.</param>
         /// <returns>The <see cref="Task{ResponseModel}"/>.</returns>
-        [HttpPost]
+        [HttpPost]    
         public async Task<IActionResult> Postusuario(usuarioModel model)
         {
             Int32 CreatedBy = 0;
@@ -103,6 +107,26 @@ namespace API.Controllers
             
 
             var result = await business.Postusuario(parameters);
+            if (result.executionError)
+            {
+                return new BadRequestObjectResult(result);
+            }
+            return new OkObjectResult(result);
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> PostUserLogin(Entities.Request.AuthRequest model)
+        {
+            Int32 CreatedBy = 0;
+
+            Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>()
+            {                
+                {"dni", model.dni },                
+                {"password", Encript.GetSHA256(model.Password) },                
+            };
+
+            var result = await businessUser.GetusuarioLogin(parameters);
             if (result.executionError)
             {
                 return new BadRequestObjectResult(result);
