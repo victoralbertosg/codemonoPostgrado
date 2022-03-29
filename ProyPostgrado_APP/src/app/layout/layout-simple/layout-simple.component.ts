@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
 
 @Component({
   selector: 'app-layout-simple',
@@ -36,15 +37,23 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   panelOpenState = false;
+  usuario:number;
+  
+
+  
+  
 
   constructor(private cd: ChangeDetectorRef,
               private media: MediaMatcher,
-              private router: Router) {
+              private router: Router,
+              private authService:ApiauthService) {
     this.mobileQuery = media.matchMedia('(max-width: 1200px)');
     this._mobileQueryListener = () => cd.detectChanges();
     // tslint:disable-next-line: deprecation
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.addListener(this._mobileQueryListener);      
   }
+
+  
 
   @ViewChild('snav') sidenav: MatSidenav;
 
@@ -59,11 +68,22 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
     } else {
       this.sidenav.close();
       this.animationItem.playSegments([52, 70], true);
-    }
+    }    
   }
 
   ngOnInit() {
-	  return null;
+    /*this.authService.datosLogin$.subscribe(us=>{
+        this.usuario=us.dni;
+        
+        console.log('recibido evento',us.dni);
+        console.log('usuarioVariable',this.usuario);
+    })*/
+    
+    this.authService.getdni$().subscribe(rr=>{
+      this.usuario=rr.dni;
+      console.log('dniSubject',this.usuario);
+    })
+	  //return null;
   }
 
   // Se crea la animación y se guarda en un arreglo
@@ -77,9 +97,11 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    return null;
+    this.authService.logout();
+    this.router.navigate(['_codemono/welcome']);
   }
   login() {
-    return null;
+    this.router.navigate(['dbo/login']);  
   }
+  
 }

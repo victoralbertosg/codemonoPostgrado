@@ -12,6 +12,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EmptyComponent } from './layout/empty/empty.component';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { JwtInterceptor } from './security/jwt.interceptor';
+import { ComponentsModule } from './components/components.module';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 export function playerFactory() {
   return player;
@@ -22,18 +25,25 @@ export function playerFactory() {
     AppComponent,
     LayoutSimpleComponent,
     EmptyComponent,
+    
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ComponentsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     LottieModule.forRoot({ player: playerFactory })
   ],
+  
   providers: [
-  ],
+    {provide: HTTP_INTERCEPTORS, 
+     useClass:JwtInterceptor, 
+     multi:true}
+
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

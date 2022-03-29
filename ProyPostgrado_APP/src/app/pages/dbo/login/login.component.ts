@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-//import { ApiauthService } from '../services/apiauth.service';
 import { Router } from '@angular/router';
 import {FormGroup, FormControl,FormBuilder, Validators} from '@angular/forms';
+import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
+import { Login } from 'src/app/models/dbo/login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,14 +11,15 @@ import {FormGroup, FormControl,FormBuilder, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   @Output() rol = new EventEmitter();
+  public l: Login;
 
 public loginForm=this.formBuilder.group({
-idusuario:['',Validators.required],
-password:['',Validators.required]
+dniusuario:['40182907',Validators.required],
+password:['123456',Validators.required]
 });
 
 
-  constructor(//public apiauthService: ApiauthService,
+  constructor(public apiauthService: ApiauthService,
               private router:Router,
               private formBuilder:FormBuilder)               
               { 
@@ -27,19 +29,31 @@ password:['',Validators.required]
               }
 
   ngOnInit(): void {
+    
   }
 
   login(){
-    /*this.apiauthService.login(this.loginForm.value).subscribe(response=>{
-      if (response.exito===1){
-       // this.router.navigate(['/principal']);
+    //console.log(this.loginForm.value);
+    
+    this.l=this.loginForm.value
+    this.l.dni=this.loginForm.value.dniusuario;
+    this.l.password=this.loginForm.value.password;
 
-        this.router.navigate(['/']);
-        this.rol.emit(response.data);
-      }
-      console.log('res login',response.data);
-    });*/
+    this.apiauthService.nombre$.emit('vsotog');
+
+    this.apiauthService.login(this.loginForm.value).subscribe(rpta=>{    
+      if (rpta.executionError===false){
+        
+        this.router.navigate(['_codemono/welcome']);
+        this.rol.emit(rpta.data);
+
+        console.log(rpta.data);
+        console.log('rolemiiter',this.rol);        //-----------
+       
+
+      }      
+    });
   }
-  
+
   
 }

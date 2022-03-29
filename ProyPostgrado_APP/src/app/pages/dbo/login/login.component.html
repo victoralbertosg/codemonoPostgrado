@@ -1,10 +1,11 @@
+
 <mat-card>
     <mat-card-title>Inicio de sesion</mat-card-title>
     <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
         <p>
             <mat-form-field>
-                <input type="text" formControlName="idusuario" matInput placeholder="Id Usuario">
+                <input type="text" formControlName="dniusuario" matInput placeholder="Dni Usuario">
             </mat-form-field>
         </p>
         <p>

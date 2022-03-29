@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutSimpleComponent } from './layout/layout-simple/layout-simple.component';
+import { DniComponent } from './components/dni/dni.component';
+import { AuthguardService } from './security/authguard.service';
 
 
 const routes: Routes = [
@@ -14,6 +16,7 @@ const routes: Routes = [
       }
     ]
   },
+
   {
     path: 'controls',
     component: LayoutSimpleComponent,
@@ -116,11 +119,21 @@ const routes: Routes = [
   },
   {
     path: 'dbo/usuario',
-    component: LayoutSimpleComponent,
+    component: LayoutSimpleComponent,canActivate:[AuthguardService],
     children: [
       {
         path: '',
         loadChildren: () => import('./pages/dbo/usuario/usuario.module').then((m) => m.usuarioModule),
+      }
+    ]
+  },
+  {
+    path: 'dbo/login',
+    component: LayoutSimpleComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/dbo/login/login.module').then((m) => m.loginModule),
       }
     ]
   },

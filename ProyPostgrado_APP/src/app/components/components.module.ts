@@ -5,9 +5,11 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatExpansionPanel, MatExpansionModule } from '@angular/material/expansion';
+import { DniComponent } from './dni/dni.component';
+
 
 @NgModule({
-  declarations: [TopBarComponent],
+  declarations: [TopBarComponent,DniComponent],
   imports: [
     MatExpansionModule,
     CommonModule,
@@ -17,7 +19,9 @@ import { MatExpansionPanel, MatExpansionModule } from '@angular/material/expansi
     NgbModule
   ],
   exports: [
-    TopBarComponent
+    TopBarComponent,
+    DniComponent,   
+
   ]
 
 })
