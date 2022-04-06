@@ -63,7 +63,7 @@ export class mencionListComponent implements OnInit, OnDestroy {
   load() {
 
     this.mencionService.getAll(this.mencionFilter).subscribe(
-      (res: any) => {
+      (res:any) => {
         this.mencions = res.data;
 
         this.InfoTableDataSource = new MatTableDataSource(this.mencions);

@@ -17,44 +17,38 @@
           </mat-card-header>
 
           <mat-card-content>
-            <div class="row">
-
-              <div class="col-md-4">
-                <mat-form-field appearance="outline">
-                  <mat-label>id_mencion</mat-label>
-                  <input matInput class="text-capitalize" type="text" formControlName="id_mencion" autocomplete="off">
+            <div class="row">           
+              <div class="col-md-4"> 
+                <mat-form-field appearance="fill">
+                  <mat-label>Menciones</mat-label>
+                  <mat-select formControlName="id_mencion" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let mencion of menciones" [value]="mencion.id_mencion">
+                      {{mencion.nombre}}                                   
+                    </mat-option>
+                  </mat-select>
+                
                 </mat-form-field>
-                <div class="control-label" *ngIf="frminscripcion.controls.id_mencion.invalid && (frminscripcion.controls.id_mencion.dirty || frminscripcion.controls.id_mencion.touched)">
+              </div>  
+            
+             <!-- <mat-form-field appearance="fill">
+                <mat-label>Tipo de investigacion</mat-label>
+                <mat-select [formControl]="invControl" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let inv of tipo_inv" [value]="inv">
+                    {{ inv.descripcion }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="invControl.hasError('required')"
+                  >seleccionar tipo de investigacion</mat-error>
+                <mat-hint></mat-hint>
+              </mat-form-field>-->
+          
 
-                  <!-- Field Required Message Validation -->
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.required">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Field required</label>
-                  </div>
 
-                  <!-- Only integer numbers Message Validation -->
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.pattern">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Only integer numbers</label>
-                  </div>
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.min">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
-                  </div>
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_mencion.errors.max">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
-                  </div>
-                </div>
-              </div>
+
+
+        
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
@@ -109,7 +103,7 @@
                   </div>
                 </div>
               </div>
-
+              <!--
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>estado</mat-label>
@@ -117,7 +111,7 @@
                 </mat-form-field>
                 <div class="control-label" *ngIf="frminscripcion.controls.estado.invalid && (frminscripcion.controls.estado.dirty || frminscripcion.controls.estado.touched)">
 
-                  <!-- Only integer numbers Message Validation -->
+                  <!-- Only integer numbers Message Validation 
                   <div class="validation-adjust" *ngIf="frminscripcion.controls.estado.errors.pattern">
                     <i class="material-icons text-danger">
                       error
@@ -137,7 +131,9 @@
                     <label class="validation-text text-danger">Maximum value is 2147483647</label>
                   </div>
                 </div>
-              </div>
+              </div>-->
+
+
 
 
             </div>

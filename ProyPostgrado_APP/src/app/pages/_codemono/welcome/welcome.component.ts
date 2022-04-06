@@ -9,7 +9,7 @@ import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
-  miusuario:number=123;
+ 
   data:Observable<UserLogin>;
   dni:number;
 
@@ -17,10 +17,15 @@ export class WelcomeComponent implements OnInit {
   constructor(private authService:ApiauthService) { }
 
   ngOnInit(): void {
-    this.authService.getdni$().subscribe(rpta=>{
+    /*this.authService.getdni$().subscribe(rpta=>{
       this.dni=rpta.dni;
       console.log('dniSubject desde welcome',this.miusuario);
+    });*/
+
+    this.authService.getuserDataObs().subscribe(rpta=>{                  
+      this.dni=rpta.dni;            
     })
+
   }
 
 }

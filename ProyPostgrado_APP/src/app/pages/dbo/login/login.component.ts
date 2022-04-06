@@ -38,9 +38,7 @@ password:['123456',Validators.required]
     this.l=this.loginForm.value
     this.l.dni=this.loginForm.value.dniusuario;
     this.l.password=this.loginForm.value.password;
-
-    this.apiauthService.nombre$.emit('vsotog');
-
+   
     this.apiauthService.login(this.loginForm.value).subscribe(rpta=>{    
       if (rpta.executionError===false){
         

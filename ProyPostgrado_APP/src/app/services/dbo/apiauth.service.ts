@@ -25,21 +25,18 @@ private userSubject:BehaviorSubject<UserLogin>;
 public user:Observable<UserLogin>;
 
 private dni = new BehaviorSubject<UserLogin>({dni:1111,token:'111',rol:1});
-datosLogin$=new EventEmitter<UserLogin>();
-public nombre$=new EventEmitter<string>();
-
 
 public getdni$():Observable<UserLogin>{
-  return this.dni.asObservable();
+  return this.dni.asObservable();  
 }
-public getnombre$():Observable<string>{
-  return this.nombre$.asObservable();
-}
-
 
 
 public get userData():UserLogin{
   return this.userSubject.value;
+}
+
+public getuserDataObs():Observable<UserLogin>{
+  return this.userSubject.asObservable();
 }
 
 constructor(private _http: HttpClient) { 
@@ -51,17 +48,13 @@ constructor(private _http: HttpClient) {
 
 login(login:Login): Observable<Response>{ 
   return this._http.post<Response>(this.url, login, httOption).pipe(    
-    map(res => {   
-        console.log ('exito',res.executionError);     
+    map(res => {               
         if (res.executionError===false){
           const userl:UserLogin=res.data;
           localStorage.setItem('user',JSON.stringify(userl));
           this.userSubject.next(userl);
           this.dni.next(userl);
-          this.datosLogin$.emit(userl);
-          this.nombre$.emit('vsotog');
-        }
-        console.log('midni',this.dni)
+         }     
         return res;
     }
     )

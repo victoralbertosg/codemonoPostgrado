@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,26 @@ export class inscripcionService {
 
     const url = environment.URL_SER_NODE + `dbo/inscripcion`;
     const res = this.http.get(url, { params });
+   
+    this.http.get(url, { params }).pipe(map(newR=>({
+       
+        
+    })))
+
+  /*  this.http.get("https://swapi.dev/api/people/1")
+    .pipe(map(response => ({
+        name: response.name,
+        birthYear: response.birth_year,
+        height: Number(response.height),
+        weight: Number(response.mass),
+        eyeColor: response.eye_color
+    })))
+    .subscribe(luke => console.log(luke))*/
+
+
     return res;
+
+
   }
 
   create(inscripcion: inscripcionModel) {

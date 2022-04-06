@@ -37,7 +37,8 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   panelOpenState = false;
-  usuario:number;
+  dni:number;
+  rol:number;
   
 
   
@@ -79,10 +80,16 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
         console.log('usuarioVariable',this.usuario);
     })*/
     
-    this.authService.getdni$().subscribe(rr=>{
-      this.usuario=rr.dni;
-      console.log('dniSubject',this.usuario);
+    /*this.authService.getdni$().subscribe(rr=>{
+      this.usuario=rr.dni;      
+    })*/
+    this.authService.getuserDataObs().subscribe(rpta=>{
+      if (rpta.dni!=null){
+      this.dni=rpta.dni;
+      this.rol=rpta.rol;
+    }
     })
+
 	  //return null;
   }
 
@@ -98,10 +105,17 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    this.authService.getuserDataObs().subscribe(rpta=>{                        
+        this.dni=0;
+        this.rol=0;      
+    });    
     this.router.navigate(['_codemono/welcome']);
+
   }
+
   login() {
-    this.router.navigate(['dbo/login']);  
+        this.router.navigate(['dbo/login']);  
+    
   }
   
 }

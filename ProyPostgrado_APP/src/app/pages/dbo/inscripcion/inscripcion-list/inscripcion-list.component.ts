@@ -106,7 +106,7 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
   delete(inscripcion: any){
     Swal.fire({
       // title: '',
-      html: `<h4>Do you want to <strong><u>delete permanently</u></strong> this record?</h4>  <br>
+      html: `<h4>Desea <strong><u>eliminar permanentemente</u></strong> este registro?</h4>  <br>
       <strong>Record # ${inscripcion.id_inscripcion}</strong>`,
       // icon: 'question',
       showCancelButton: true,
@@ -123,7 +123,7 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
             return;
           }
 
-          Swal.fire('Delete', 'Record deleted', 'success').then(() => {
+          Swal.fire('Eliminar', 'Registro eliminado', 'success').then(() => {
             this.load();
           });
         },

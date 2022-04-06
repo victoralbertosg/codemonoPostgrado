@@ -5,7 +5,9 @@ import Swal from 'sweetalert2';
 import { DateAdapter } from '@angular/material/core';
 
 import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
+import { mencionModel } from 'src/app/models/dbo/mencion.model';
 import { inscripcionService } from 'src/app/services/dbo/inscripcion.service';
+import { mencionService } from 'src/app/services/dbo/mencion.service';
 
 @Component({
   selector: 'app-inscripcion-form',
@@ -20,12 +22,17 @@ export class inscripcionFormComponent implements OnInit {
   frminscripcion: FormGroup;
   inscripcionModel = new inscripcionModel();
   id_inscripcion = 0;
+  mencionModel= new mencionModel();
+  menciones:any[]=[];
+
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private inscripcionService: inscripcionService,
+    private mencionService:mencionService,
     private dateAdapter: DateAdapter<Date>
   ) {
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
@@ -43,14 +50,22 @@ export class inscripcionFormComponent implements OnInit {
         this.initForm();
       }
     });
+
+    this.mencionService.getAll(this.mencionModel).subscribe((rpta:any)=>{
+      this.menciones=rpta.data;
+      console.log('menciones',this.menciones);
+    })
+
+    
+
   }
 
   createForm() {
     this.frminscripcion = this.formBuilder.group({
-      id_mencion: new FormControl(null, [Validators.required, Validators.pattern('^-?[0-9]*$'), Validators.min(-2147483648), Validators.max(2147483647)]),
+      id_mencion: new FormControl(null, Validators.required),
       id_usuario: new FormControl(null, [Validators.required, Validators.pattern('^-?[0-9]*$'), Validators.min(-2147483648), Validators.max(2147483647)]),
       urlfile: new FormControl(null, [Validators.maxLength(200)]),
-      estado: new FormControl(null, [Validators.pattern('^-?[0-9]*$'), Validators.min(-2147483648), Validators.max(2147483647)]),
+      //estado: new FormControl(null, [Validators.pattern('^-?[0-9]*$'), Validators.min(-2147483648), Validators.max(2147483647)]),
 
     });
 
@@ -69,10 +84,11 @@ export class inscripcionFormComponent implements OnInit {
   }
 
   saveForm() {
+
     if (!this.frminscripcion.valid) {
       Swal.fire(
         'Error',
-        'Please, fill in all the required fields correctly',
+        'Por favor, llene todos los campos obligatorios',
         'error'
       );
       return;
@@ -80,7 +96,8 @@ export class inscripcionFormComponent implements OnInit {
 
     let inscripcion: inscripcionModel =  new inscripcionModel();
     inscripcion = this.frminscripcion.value;
-    
+    inscripcion.estado=1
+    console.log('incripcion', inscripcion);    
     if (this.editAction) {
       inscripcion.id_inscripcion = this.id_inscripcion;
       this.inscripcionService.update(inscripcion).subscribe((res: any) => {
@@ -90,7 +107,7 @@ export class inscripcionFormComponent implements OnInit {
           return;
         }
 
-        Swal.fire('Edit', 'Record edited', 'success').then(() => {
+        Swal.fire('Editar', 'Registro modificado', 'success').then(() => {
           this.router.navigate(['/dbo/inscripcion']);
         });
       },
@@ -112,7 +129,7 @@ export class inscripcionFormComponent implements OnInit {
           return;
         }
 
-        Swal.fire('Create', 'Record created', 'success').then(() => {
+        Swal.fire('Create', 'Registro creado', 'success').then(() => {
           this.router.navigate(['/dbo/inscripcion']);
         });
       },

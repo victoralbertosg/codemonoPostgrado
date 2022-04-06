@@ -8,8 +8,7 @@ import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
 })
 export class DniComponent implements OnInit {
 
-  miusuario:number;
-  nombre:string='beto';
+  dni:number;  
   constructor(private authService:ApiauthService) { }
 
 
@@ -22,6 +21,10 @@ export class DniComponent implements OnInit {
       /*this.authService.getnombre$().subscribe(n=>{
       this.nombre=n;
     })*/
+
+    this.authService.getuserDataObs().subscribe(rpta=>
+      this.dni=rpta.dni
+      )
   }
 
 }
