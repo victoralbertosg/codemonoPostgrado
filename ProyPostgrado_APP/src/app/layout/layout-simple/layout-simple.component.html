@@ -14,7 +14,7 @@
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="login()">
-      <mat-icon>lock</mat-icon>
+      <mat-icon>lock_open</mat-icon>
       <span>Login</span>
     </button>
     <button mat-menu-item (click)="logout()">
@@ -30,9 +30,9 @@
     <div class="sidenav-header">
       <img mat-card-image class="header-image" src="assets/images/avatar.png" />
       <div class="text-top text-center">
-        <span class="text-header-menu">{{dni}}</span><br>
-        <span class="text-header-sub-menu">Administrator</span>
-        <span class="text-header-sub-menu">{{rol}}</span>
+      <span class="text-header-menu"> {{ (dataUsuario | async )?.dni }}</span><br>
+        <span class="text-header-sub-menu">Rol:</span>
+        <span class="text-header-sub-menu">{{ (dataUsuario | async )?.rol }}</span>
       </div>
     </div>
     <mat-nav-list class="item-space">
@@ -85,24 +85,29 @@
             <i class="material-icons icon-ajust">extension</i>
             Usuario
           </a>
+
+          <a mat-list-item [routerLink]="['/dbo/matricula']" routerLinkActive="premium">
+            <i class="material-icons icon-ajust">extension</i>
+            Matricula
+          </a>
+
+          <a mat-list-item [routerLink]="['/dbo/detalle-matricula']" routerLinkActive="premium">
+            <i class="material-icons icon-ajust">extension</i>
+            Detalle Matricula
+          </a> 
+
         </mat-expansion-panel>
       </mat-accordion>
     </div>  
      
-      <a mat-list-item [routerLink]="['/dbo/detalle-matricula']" routerLinkActive="premium">
-        <i class="material-icons icon-ajust">extension</i>
-        Detalle Matricula
-      </a>     
-
+    <div *ngIf="rol ===1 || rol ===2">  
       <a mat-list-item [routerLink]="['/dbo/inscripcion']" routerLinkActive="premium">
         <i class="material-icons icon-ajust">extension</i>
         Inscripción
       </a>
+    </div>  
 
-      <a mat-list-item [routerLink]="['/dbo/matricula']" routerLinkActive="premium">
-        <i class="material-icons icon-ajust">extension</i>
-        Matricula
-      </a>
+    
 
       <!--CODEMONO: NO REMOVE THIS COMMENT (MENU)-->
 

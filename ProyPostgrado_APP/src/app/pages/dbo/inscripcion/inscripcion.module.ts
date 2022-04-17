@@ -22,7 +22,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 import { PipesModule } from '../../../pipes/_codemono/pipes.module';
+
 
 import { inscripcionRoutes } from './inscripcion.routes';
 import { inscripcionComponent } from './inscripcion.component';
@@ -60,6 +62,7 @@ import { inscripcionFormComponent } from './inscripcion-form/inscripcion-form.co
     MatSidenavModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatRadioModule,
     PipesModule
   ]
 })

@@ -3,13 +3,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { MatriculaModel } from 'src/app/models/dbo/matricula.model';
 import { Observable } from 'rxjs';
+import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatriculaService {
 
+
+  
+
   constructor(private http: HttpClient) { }
+
 
   get(id: number){
     const url = environment.URL_SER_NODE + `dbo/matricula/${id}`;
@@ -55,6 +61,8 @@ export class MatriculaService {
     const res = this.http.delete(url);
     return res;
   }
+
+
 
 }
 

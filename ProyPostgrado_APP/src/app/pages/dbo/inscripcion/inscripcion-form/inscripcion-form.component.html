@@ -1,37 +1,53 @@
 <app-top-bar title="inscripcion" subTitle="Form">
-  <div toolL>
-
-  </div>
-  <div toolR>
-
-  </div>
+  <div toolL></div>
+  <div toolR></div>
 </app-top-bar>
 
 <div class="jumbotron">
   <div class="row mt-5">
     <div class="col-md-12">
-      <form [formGroup]="frminscripcion" (ngSubmit)="saveForm()" class="kt-form kt-form--label-right">
+      <form
+        [formGroup]="frminscripcion"
+        (ngSubmit)="saveForm()"
+        class="kt-form kt-form--label-right"
+      >
         <mat-card class="example-card">
           <mat-card-header class="adjust-m-bottom-30">
-            <mat-card-title>{{frmTitle}}</mat-card-title>
+            <mat-card-title>{{ frmTitle }}</mat-card-title>
           </mat-card-header>
 
+          <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <input
+                matInput
+                class="text-capitalize"
+                type="text"
+                autocomplete="off"
+                value="{{ usuario.nombre}}"
+                readonly
+              />
+            </mat-form-field>
+          </div>
+
           <mat-card-content>
-            <div class="row">           
-              <div class="col-md-4"> 
+            <div class="row">
+              <div class="col-md-4">
                 <mat-form-field appearance="fill">
                   <mat-label>Menciones</mat-label>
                   <mat-select formControlName="id_mencion" required>
                     <mat-option>--</mat-option>
-                    <mat-option *ngFor="let mencion of menciones" [value]="mencion.id_mencion">
-                      {{mencion.nombre}}                                   
+                    <mat-option
+                      *ngFor="let mencion of menciones"
+                      [value]="mencion.id_mencion"
+                    >
+                      {{ mencion.nombre }}
                     </mat-option>
                   </mat-select>
-                
                 </mat-form-field>
-              </div>  
-            
-             <!-- <mat-form-field appearance="fill">
+              </div>
+
+              <!-- <mat-form-field appearance="fill">
                 <mat-label>Tipo de investigacion</mat-label>
                 <mat-select [formControl]="invControl" required>
                   <mat-option>--</mat-option>
@@ -43,63 +59,35 @@
                   >seleccionar tipo de investigacion</mat-error>
                 <mat-hint></mat-hint>
               </mat-form-field>-->
-          
-
-
-
-
-        
-
-              <div class="col-md-4">
-                <mat-form-field appearance="outline">
-                  <mat-label>id_usuario</mat-label>
-                  <input matInput class="text-capitalize" type="text" formControlName="id_usuario" autocomplete="off">
-                </mat-form-field>
-                <div class="control-label" *ngIf="frminscripcion.controls.id_usuario.invalid && (frminscripcion.controls.id_usuario.dirty || frminscripcion.controls.id_usuario.touched)">
-
-                  <!-- Field Required Message Validation -->
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.required">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Field required</label>
-                  </div>
-
-                  <!-- Only integer numbers Message Validation -->
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.pattern">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Only integer numbers</label>
-                  </div>
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.min">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Minimum value is -2147483648</label>
-                  </div>
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.id_usuario.errors.max">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Maximum value is 2147483647</label>
-                  </div>
-                </div>
-              </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>urlfile</mat-label>
-                  <input matInput class="text-capitalize" type="text" formControlName="urlfile" autocomplete="off">
+                  <input
+                    matInput
+                    class="text-capitalize"
+                    type="text"
+                    formControlName="urlfile"
+                    autocomplete="off"
+                  />
                 </mat-form-field>
-                <div class="control-label" *ngIf="frminscripcion.controls.urlfile.invalid && (frminscripcion.controls.urlfile.dirty || frminscripcion.controls.urlfile.touched)">
-
+                <div
+                  class="control-label"
+                  *ngIf="
+                    frminscripcion.controls.urlfile.invalid &&
+                    (frminscripcion.controls.urlfile.dirty ||
+                      frminscripcion.controls.urlfile.touched)
+                  "
+                >
                   <!-- MaxLength Message Validation -->
-                  <div class="validation-adjust" *ngIf="frminscripcion.controls.urlfile.errors.maxlength">
-                    <i class="material-icons text-danger">
-                      error
-                    </i>
-                    <label class="validation-text text-danger">Maximum field length is 200</label>
+                  <div
+                    class="validation-adjust"
+                    *ngIf="frminscripcion.controls.urlfile.errors.maxlength"
+                  >
+                    <i class="material-icons text-danger"> error </i>
+                    <label class="validation-text text-danger"
+                      >Maximum field length is 200</label
+                    >
                   </div>
                 </div>
               </div>
@@ -133,14 +121,38 @@
                 </div>
               </div>-->
 
-
-
+              <!--<div class="col-md-4">
+                <label id="ev_inscripcion">Seleccione Evaluación</label>
+                <mat-radio-group aria-label="ev_inscripcion" [(ngModel)]="estadoSeleccionado">
+                  <mat-radio-button
+                    *ngFor="let estado of estados"
+                    value="estado">
+                    {{ estado }}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <div>la Evaluación es: {{estadoSeleccionado}}</div>
+              </div>-->
+           
+              <div class="col-md-4" *ngIf="rol==2 && editAction==true && editar==false">
+                <mat-radio-group aria-label="Seleccione:" formControlName="estado" >
+                  <mat-radio-button value=2>Aprobar Inscripción</mat-radio-button>
+                  <mat-radio-button value=3>Observar</mat-radio-button>
+                </mat-radio-group>
+              </div> 
+             
 
             </div>
           </mat-card-content>
-
+        
           <mat-card-actions align="end">
-            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/inscripcion']">Cancel</button>
+            <button
+              mat-raised-button
+              class="light"
+              type="button"
+              [routerLink]="['/dbo/inscripcion']"
+            >
+              Cancel
+            </button>
 
             <button mat-raised-button class="primary" type="submit">
               <i class="fa fa-save"></i> Save
@@ -148,8 +160,7 @@
           </mat-card-actions>
         </mat-card>
       </form>
-
+    
     </div>
   </div>
 </div>
-

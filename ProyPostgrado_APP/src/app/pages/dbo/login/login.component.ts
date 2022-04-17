@@ -41,14 +41,8 @@ password:['123456',Validators.required]
    
     this.apiauthService.login(this.loginForm.value).subscribe(rpta=>{    
       if (rpta.executionError===false){
-        
         this.router.navigate(['_codemono/welcome']);
-        this.rol.emit(rpta.data);
-
-        console.log(rpta.data);
-        console.log('rolemiiter',this.rol);        //-----------
-       
-
+        this.rol.emit(rpta.data);             
       }      
     });
   }

@@ -193,7 +193,7 @@
           </mat-card-content>
 
           <mat-card-actions align="end">
-            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/matricula']">Cancel</button>
+            <button mat-raised-button class="light" type="button" [routerLink]="['/dbo/inscripcion']">Cancel</button>
 
             <button mat-raised-button class="primary" type="submit">
               <i class="fa fa-save"></i> Save
@@ -201,6 +201,16 @@
           </mat-card-actions>
         </mat-card>
       </form>
+
+      <mat-card *ngFor="let curso of cursos" class="cursos">
+        <mat-card-subtitle>Curso Disponible</mat-card-subtitle>
+        <mat-card-title>{{curso.nombre_curso}}</mat-card-title>
+        <mat-card-content>
+            ciclo: {{curso.ciclo}}  creditos: {{curso.credito}}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+      
+      </mat-card>-->
 
     </div>
   </div>

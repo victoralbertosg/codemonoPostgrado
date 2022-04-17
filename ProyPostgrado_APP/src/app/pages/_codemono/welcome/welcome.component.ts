@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { data } from 'jquery';
 import { Observable } from 'rxjs';
 import { UserLogin } from 'src/app/models/dbo/user';
 import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
@@ -10,8 +11,9 @@ import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
 })
 export class WelcomeComponent implements OnInit {
  
-  data:Observable<UserLogin>;
-  dni:number;
+  //data:Observable<UserLogin>;
+  data=this.authService.getuserDataObs();
+  //dni:number;
 
   
   constructor(private authService:ApiauthService) { }
@@ -22,9 +24,9 @@ export class WelcomeComponent implements OnInit {
       console.log('dniSubject desde welcome',this.miusuario);
     });*/
 
-    this.authService.getuserDataObs().subscribe(rpta=>{                  
+    /*this.authService.getuserDataObs().subscribe(rpta=>{                  
       this.dni=rpta.dni;            
-    })
+    })*/
 
   }
 

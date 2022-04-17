@@ -54,6 +54,7 @@ import { MatriculaFormComponent } from './matricula-form/matricula-form.componen
     MatSlideToggleModule,
     MatSortModule,
     MatMenuModule,
+    MatCardModule,
     MatTooltipModule,
     MatButtonToggleModule,
     MatGridListModule,

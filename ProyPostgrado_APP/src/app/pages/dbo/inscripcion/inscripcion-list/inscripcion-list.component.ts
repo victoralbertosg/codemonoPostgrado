@@ -8,8 +8,13 @@ import { FormBuilder } from '@angular/forms';
 
 import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
 import { inscripcionService } from 'src/app/services/dbo/inscripcion.service';
+import { usuarioService } from 'src/app/services/dbo/usuario.service';
 
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ApiauthService } from 'src/app/services/dbo/apiauth.service';
+import { usuarioModel } from 'src/app/models/dbo/usuario.model';
+import { mencionService } from 'src/app/services/dbo/mencion.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,8 +33,17 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
 
   inscripcions: any[] = [];
   inscripcion: inscripcionModel;
+  dataFiltered:any[]=[];
 
   inscripcionFilter = new inscripcionModel();
+  rol?:number;
+  dni?:number;
+  listaUsuarioDni:usuarioModel[]=[];
+  usuario?:usuarioModel;
+  nombre?:string;
+  idusuario?:number;
+  idusuarioSubs?:any; 
+  
 
 
   // Material Table DataSource
@@ -42,8 +56,12 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
 
   constructor(
     private inscripcionService: inscripcionService,
+    private authService:ApiauthService,
+    private usuarioService:usuarioService,
+    private mencionService:mencionService,
     private cd: ChangeDetectorRef,
-    private media: MediaMatcher
+    private media: MediaMatcher,
+    private router: Router,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 1344px)');
     this._mobileQueryListener = () => cd.detectChanges();
@@ -52,20 +70,56 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.load();
+  
+    // obtener rol y dni de los datos de acceso
+    this.authService.getuserDataObs().subscribe(rpta=>{
+        if (rpta!=null){
+        this.rol=rpta.rol;
+        this.dni=rpta.dni;   
+      }
+    })
+   
+   //obtener id_usuario a partir del dni
+    this.usuarioService.getUsuarioByDni(this.dni);
+    //usuario bihaibord service
+    this.idusuarioSubs=this.usuarioService.getuser().subscribe(r=>this.idusuario=r.id_usuario);  
+    console.log('dni',this.dni) ;
+    console.log('idusuario',this.idusuario);
+    this.load();    
+   
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    this.idusuarioSubs.unsubscribe();
   }
 
 
   load() {
-
+   
     this.inscripcionService.getAll(this.inscripcionFilter).subscribe(
       (res: any) => {
-        this.inscripcions = res.data;
+        ///filtra por id usuario para rol 1      
+        if (this.rol===1)res.data=res.data.filter((rf:any)=>rf.id_usuario===this.idusuario);                                      
+         
+        res.data.map(r=>{         
+          switch (r.estado){
+            case 1:  r.estado='Nuevo' ;break;
+            case 2:  r.estado='Aprobado';break;
+            case 3:  r.estado='Observado';break;            
+          };       
+         
+          this.mencionService.get(r.id_mencion).subscribe((rm:any)=>{
+              r.id_mencion=rm.data[0].nombre;
+          })
+          this.usuarioService.get(r.id_usuario).subscribe((ru:any)=>{           
+            r.id_usuario=ru.data[0].nombre;
+          });      
 
+        });           
+                 
+        this.inscripcions = res.data;
+        
         this.InfoTableDataSource = new MatTableDataSource(this.inscripcions);
         this.InfoTableDataSource.paginator = this.paginator;
         this.InfoTableDataSource.sortingDataAccessor = (item: any, property) => {
@@ -150,6 +204,25 @@ export class inscripcionListComponent implements OnInit, OnDestroy {
   toggleGroup(event: string) {
   }
 
+  edit(){
+    this.inscripcionService.seteditar(true);
+  }
+  
+  matricula(inscripcion:any){    
+    this.inscripcionService.get(inscripcion.id_inscripcion).subscribe((i:inscripcionModel)=>{
+     // console.log ('inscripcion enviar',i);    
+      if (i!=null){                    
+          this.inscripcionService.setInscripcion(i);          
+        }
+        //console.log ('inscripcion enviar',i); 
+        
+    }) 
+    
+    this.router.navigate(['/dbo/matricula/add/']); 
+  }
 
 }
+
+
+
 

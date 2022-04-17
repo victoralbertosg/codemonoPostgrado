@@ -112,13 +112,20 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header class="td6">Acciones</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="Action" class="td6">
 
-              <button mat-flat-button type="button" [routerLink]="['/dbo/inscripcion/edit/', row.id_inscripcion]" matTooltip="Edit inscripcion">
+              <button mat-flat-button type="button" (click)="edit()"[routerLink]="['/dbo/inscripcion/edit/', row.id_inscripcion]" matTooltip="Edit inscripcion">
                 <mat-icon class="light">edit</mat-icon>
               </button>
               <button mat-flat-button type="button" (click)="delete(row)" matTooltip="Delete inscripcion">
                 <mat-icon class="light">delete</mat-icon>
               </button>
 
+
+              <button *ngIf="rol==2" mat-flat-button type="button" [routerLink]="['/dbo/inscripcion/edit/', row.id_inscripcion]" matTooltip="Evaluación Inscripción">
+                <mat-icon class="light">event_available</mat-icon>
+              </button>
+              <button *ngIf="rol==1 && row.estado=='Aprobado' " mat-flat-button type="button" (click)="matricula(row)" matTooltip="Matricula">
+                <mat-icon class="light">add_to_photos</mat-icon>
+              </button>              
             </mat-cell>
           </ng-container>
 

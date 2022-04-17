@@ -7,7 +7,7 @@ export class JwtInterceptor implements HttpInterceptor{
     constructor(private apiauthService:ApiauthService){}
     intercept(request:HttpRequest<any>, next:HttpHandler){
         const user=this.apiauthService.userData;
-        console.log('interceptor', user)
+       // console.log('interceptor', user)
         if (user){
 
             request=request.clone({
@@ -16,7 +16,7 @@ export class JwtInterceptor implements HttpInterceptor{
                 }
             });
         }
-        console.log('requestnew',request);
+      //  console.log('requestnew',request);
         return next.handle(request);
     }
 }

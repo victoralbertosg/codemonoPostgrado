@@ -28,6 +28,7 @@ export class mencionListComponent implements OnInit, OnDestroy {
 
   mencions: any[] = [];
   mencion: mencionModel;
+  nwTable:any[]=[];
 
   mencionFilter = new mencionModel();
 
@@ -61,6 +62,13 @@ export class mencionListComponent implements OnInit, OnDestroy {
 
 
   load() {
+
+    this.mencionService.getAll(this.mencionFilter).subscribe(
+      rpta=>{
+        //this.nwTable=rpta.data
+
+      }
+    )
 
     this.mencionService.getAll(this.mencionFilter).subscribe(
       (res:any) => {

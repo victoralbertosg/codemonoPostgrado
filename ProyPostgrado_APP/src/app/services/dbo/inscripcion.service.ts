@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,8 +10,22 @@ import { map } from 'rxjs/operators';
 })
 export class inscripcionService {
 
-  constructor(private http: HttpClient) { }
+  //private inscripcionSubject:BehaviorSubject<inscripcionModel>;
+  private inscripcionSubject= new Subject<inscripcionModel>();
 
+  editar:boolean=false;
+  constructor(private http: HttpClient) {
+    
+     /* this.inscripcionSubject=new BehaviorSubject({
+          id_inscripcion: 0,
+          id_mencion: 0,
+          id_usuario: 0,
+          urlfile: '',
+          estado: 0,
+      }
+      );*/
+   }
+  
   get(id: number){
     const url = environment.URL_SER_NODE + `dbo/inscripcion/${id}`;
     const res = this.http.get(url);
@@ -38,11 +52,7 @@ export class inscripcionService {
         eyeColor: response.eye_color
     })))
     .subscribe(luke => console.log(luke))*/
-
-
     return res;
-
-
   }
 
   create(inscripcion: inscripcionModel) {
@@ -72,6 +82,21 @@ export class inscripcionService {
     const url = environment.URL_SER_NODE + `dbo/inscripcion/${id}`;
     const res = this.http.delete(url);
     return res;
+  }
+
+  geteditar(){
+    return this.editar
+  }
+  seteditar(v:boolean){
+    this.editar=v
+  }
+
+  getinscripcionSubject():Observable<inscripcionModel>{
+    return this.inscripcionSubject.asObservable();    
+  }
+  
+  setInscripcion(i: inscripcionModel){    
+    this.inscripcionSubject.next(i);    
   }
 
 }

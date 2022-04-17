@@ -29,20 +29,16 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
     loop: false
   };
 
-  data: any = [];
+  
   progreso = 'false';
   isLoggedIn: boolean;
   mobileQuery: MediaQueryList;
   // tslint:disable-next-line: variable-name
   private _mobileQueryListener: () => void;
-
-  panelOpenState = false;
+  panelOpenState = false;  
+  dataUsuario=this.authService.getuserDataObs();
   dni:number;
   rol:number;
-  
-
-  
-  
 
   constructor(private cd: ChangeDetectorRef,
               private media: MediaMatcher,
@@ -73,26 +69,13 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    /*this.authService.datosLogin$.subscribe(us=>{
-        this.usuario=us.dni;
-        
-        console.log('recibido evento',us.dni);
-        console.log('usuarioVariable',this.usuario);
-    })*/
-    
-    /*this.authService.getdni$().subscribe(rr=>{
-      this.usuario=rr.dni;      
-    })*/
-    this.authService.getuserDataObs().subscribe(rpta=>{
-      if (rpta.dni!=null){
+
+   this.authService.getuserDataObs().subscribe(rpta=>{     
+      if (rpta!=null){
       this.dni=rpta.dni;
-      this.rol=rpta.rol;
-    }
+      this.rol=rpta.rol;}
     })
-
-	  //return null;
   }
-
   // Se crea la animación y se guarda en un arreglo
   animationCreated(animationItem: AnimationItem): void {
     this.animationItem = animationItem;
@@ -104,18 +87,16 @@ export class LayoutSimpleComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authService.logout();
-    this.authService.getuserDataObs().subscribe(rpta=>{                        
-        this.dni=0;
-        this.rol=0;      
-    });    
+    this.authService.logout();    
     this.router.navigate(['_codemono/welcome']);
-
+    this.authService.getuserDataObs().subscribe((r:any)=>{
+        this.dni=0;
+        this.rol=0;
+    })
   }
 
   login() {
-        this.router.navigate(['dbo/login']);  
-    
+        this.router.navigate(['dbo/login']); 
   }
   
 }
