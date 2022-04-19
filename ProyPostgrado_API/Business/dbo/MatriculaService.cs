@@ -58,6 +58,25 @@ namespace Business.dbo
             return m;
         }
 
+        public async Task<ResponseModel> GetVMatricula(Dictionary<string, dynamic> parameters)
+        {
+            try
+            {
+                var res = await dao.GetVMatricula<vMatriculaModel>(parameters);
+                m.data = res;
+                m.executionError = false;
+                m.message = "";
+            }
+            catch (Exception ex)
+            {
+                m.data = null;
+                m.executionError = true;
+                m.message = "Error: " + ex.Message + ". " + ex.InnerException;
+            }
+            return m;
+        }
+
+
 
         /// <summary>
         /// The PostMatricula.

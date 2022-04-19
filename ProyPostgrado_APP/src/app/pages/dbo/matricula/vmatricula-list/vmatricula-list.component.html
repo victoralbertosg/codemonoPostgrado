@@ -1,0 +1,159 @@
+<mat-drawer-container>
+
+    <mat-drawer #drawer [mode]="mobileQuery.matches ? 'over' : 'side'" position="end" (opened)="sidenavStatus='open'"
+      (closed)="sidenavStatus='close'" class="filter-sidebar">
+  
+      <!-- Filter controls -->
+      <div class="light filter-content">
+  
+        <!-- Header filter -->
+        <mat-list>
+          <mat-list-item class="filter-header">
+            <div mat-line><span class="filter-title text-primary ">Filters</span></div>
+            <button mat-icon-button class="light ml-auto mr-0" (click)="drawer.toggle()" >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+  
+        <div class="filter-subheader">
+          <span>Feature available in Professional version</span>
+        </div>
+  
+      </div>
+    </mat-drawer>
+  
+    <!-- Tob bar -->
+    <app-top-bar title="Cursos Matriculados" subTitle="registros matricula">
+      <div toolL>
+      </div>   
+    </app-top-bar>
+    <!-- Tob bar -->
+  
+    <!-- Content -->
+    <div class="jumbotron">
+      <mat-card class="margin-bottom">
+        <mat-card-content>
+          <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>person_pin</mat-icon>
+          </button>
+          <span class="padding">Cosulta cursos matriculados</span>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <div class="row">
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <mat-card-title>Consulta Matricula</mat-card-title>
+            <mat-card-subtitle>cursos matriculados</mat-card-subtitle>
+          </div>
+  
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <mat-form-field style="width:100% !important;" appearance="outline">
+              <mat-label>buscar</mat-label>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="">
+            </mat-form-field>
+          </div>
+  
+          <div class="col-lg-5 col-md-8 col-sm-12">
+            <mat-paginator [pageSizeOptions]="[10, 15, 20, 30, 50, 100]"></mat-paginator>
+          </div>
+        </div>
+  
+  
+        <mat-card-content>
+          <div class="mat-card-padding">
+  
+            <mat-table mat-table [dataSource]="InfoTableDataSource" matSort class="example-container mat-elevation-z8" matTableExporter  #exporter="matTableExporter" >
+  
+            <ng-container matColumnDef="id_Curso_matricula">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">id_Curso_matricula</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="id_Curso_matricula" class="td1" >
+                {{row.id_curso_matricula}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="curso">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">curso</mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="curso" class="td1" >
+                  {{row.nombre_curso}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="apellido">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">apellido</mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="apellido" class="td1" >
+                  {{row.usuario_apellido}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">nombre</mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="nombre" class="td1" >
+                  {{row.usuario_nombre}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="mencion">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="td1">mencion</mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="mencion" class="td1" >
+                  {{row.mencion_nombre}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="periodo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="td5">periodo</mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="periodo" class="td5" >
+                  {{row.periodo}}</mat-cell>
+              </ng-container>  
+
+            <ng-container matColumnDef="ciclo">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="td5">ciclo</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="ciclo" class="td5" >
+                {{row.ciclo}}</mat-cell>
+            </ng-container>  
+           
+  
+            <ng-container matColumnDef="Action">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="td7">Action</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Action" class="td7">
+  
+                <button mat-flat-button type="button" [routerLink]="['/dbo/matricula/edit/', row.id_matricula]" matTooltip="Edit matricula">
+                  <mat-icon class="light">edit</mat-icon>
+                </button>
+               <!-- <button mat-flat-button type="button" (click)="delete(row)" matTooltip="Delete Matricula">
+                  <mat-icon class="light">delete</mat-icon>
+                </button>-->
+  
+              </mat-cell>
+            </ng-container>
+  
+  
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="mat-table-header"></mat-header-row>
+              <mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"
+                [ngClass]="{row_color_Table: even}">
+              </mat-row>
+            </mat-table>
+         <button mat-raised-button color="primary" 
+          (click)="exporter.exportTable('xlsx', {fileName:'Matricula'})">Exportar a xlsx</button>
+  <button id="export" mat-raised-button color="primary" 
+          (click)="exporter.exportTable('csv')">Exportar a csv</button>
+  <button id="export" mat-raised-button color="primary" 
+          (click)="exporter.exportTable('json')">Exportar a json</button>
+  <button id="export" mat-raised-button color="primary" 
+          (click)="exporter.exportTable('txt')">Exportar a txt</button>
+
+          </div>
+  
+          <div class="mat-card-padding" *ngIf="this.matriculas.length===0">
+            <mat-card class="example-card">
+              <div class="no-data-adjust">
+                <span class="text-medium">
+                  No records found
+                </span>
+                <mat-icon class="text-medium">web_asset</mat-icon>
+              </div>
+            </mat-card>
+          </div>
+  
+        </mat-card-content>
+  
+      </mat-card>
+    </div>
+    <!-- Content -->
+  
+  </mat-drawer-container>
+  

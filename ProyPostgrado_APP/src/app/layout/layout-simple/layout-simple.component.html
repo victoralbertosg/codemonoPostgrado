@@ -99,6 +99,24 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>  
+
+    <mat-accordion >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        style="margin-top: 15px;">
+        <mat-expansion-panel-header [ngClass]="{'active-panel': panelOpenState===true}" routerLinkActive="active-panel">
+          <mat-panel-title>
+            <i class="material-icons icon-ajust" style="color: #797878;">
+              dashboard
+            </i>
+            <p class="collapse-menu">Reportes</p>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item [routerLink]="['/dbo/matricula/vlist']" routerLinkActive="premium">
+          <i class="material-icons icon-ajust">extension</i>
+          Consultas - Reportes
+        </a>
+      </mat-expansion-panel>
+    </mat-accordion>
      
     <div *ngIf="rol ===1 || rol ===2">  
       <a mat-list-item [routerLink]="['/dbo/inscripcion']" routerLinkActive="premium">

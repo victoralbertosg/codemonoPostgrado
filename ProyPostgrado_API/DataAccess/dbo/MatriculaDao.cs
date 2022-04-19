@@ -35,7 +35,14 @@ namespace DataAccess.dbo
         {
             return await database.QueryAsync<T>(parameters, "[dbo].[Matricula_READ]");
         }
-        
+
+        public async Task<IEnumerable<T>> GetVMatricula<T>(Dictionary<string, dynamic> parameters)
+        {
+            return await database.QueryAsync<T>(parameters, "[dbo].[view_matricula_READ]");
+        }
+
+
+
         /// <summary>
         /// The PostMatricula.
         /// </summary>

@@ -76,6 +76,42 @@ namespace API.Controllers
             return new OkObjectResult(result);
         }
 
+        [HttpGet]
+        [Route("vmatricula")]
+        public async Task<IActionResult> GetVMatricula(Int32? id_curso)
+        {
+            Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>()
+            {
+                {"Option", 1 },
+                {"id_curso", id_curso }
+            };
+
+            var result = await business.GetVMatricula(parameters);
+            if (result.executionError)
+            {
+                return new BadRequestObjectResult(result);
+            }
+            return new OkObjectResult(result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// The PostMatricula.
         /// </summary>

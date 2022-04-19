@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutSimpleComponent } from './layout/layout-simple/layout-simple.component';
-import { DniComponent } from './components/dni/dni.component';
 import { AuthguardService } from './security/authguard.service';
 
 

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MatriculaModel } from 'src/app/models/dbo/matricula.model';
 import { Observable } from 'rxjs';
 import { inscripcionModel } from 'src/app/models/dbo/inscripcion.model';
+import { View_MatriculaModel } from 'src/app/models/dbo/view-matricula.models';
 
 
 @Injectable({
@@ -30,6 +31,16 @@ export class MatriculaService {
     const res = this.http.get(url, { params });
     return res;
   }
+
+  getAllView(vmatricula: View_MatriculaModel): Observable<View_MatriculaModel>{
+    let params = new HttpParams();
+
+    const url = environment.URL_SER_NODE + `dbo/matricula/vmatricula`;    
+    const res = this.http.get(url, { params });
+    return res;
+  }
+
+
 
   create(matricula: MatriculaModel) {
     const url = environment.URL_SER_NODE + `dbo/matricula`;

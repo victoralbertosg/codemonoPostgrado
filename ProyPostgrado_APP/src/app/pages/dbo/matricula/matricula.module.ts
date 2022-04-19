@@ -28,13 +28,17 @@ import { MatriculaRoutes } from './matricula.routes';
 import { MatriculaComponent } from './matricula.component';
 import { MatriculaListComponent } from './matricula-list/matricula-list.component';
 import { MatriculaFormComponent } from './matricula-form/matricula-form.component';
+import { VmatriculaListComponent } from './vmatricula-list/vmatricula-list.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { CdkTableExporterModule } from 'cdk-table-exporter';
 
 
 @NgModule({
   declarations: [
     MatriculaComponent,
     MatriculaListComponent,
-    MatriculaFormComponent
+    MatriculaFormComponent,
+    VmatriculaListComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +65,10 @@ import { MatriculaFormComponent } from './matricula-form/matricula-form.componen
     MatSidenavModule,
     MatDatepickerModule,
     MatDialogModule,
-    PipesModule
+    MatTableExporterModule,
+    PipesModule,
+    CdkTableExporterModule
+    
   ]
 })
 export class MatriculaModule { }

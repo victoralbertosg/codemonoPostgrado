@@ -190,7 +190,7 @@ export class MatriculaFormComponent implements OnInit {
         this.cursos.forEach((value,index)=>{                   
           this.detalleMatricula.id_curso=value.id_curso;
           //grabar el detalle de matricula
-              //this.detalle_matriculaService.create(this.detalleMatricula).subscribe(r=>console.log(r));
+              this.detalle_matriculaService.create(this.detalleMatricula).subscribe(r=>console.log(r));
         });   
         //this.art.forEach((value, index)  => {.......});
       },
